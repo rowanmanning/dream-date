@@ -52,7 +52,7 @@ const createCalendar = require('dream-date');
 
 ### Creating a calendar
 
-The `createCalendar` function accepts a single argument which is a calendar schema object. I don't have time to document that _right_ now (ahem it's in alpha) but it written as [JSON Schema] so maybe you can look in [`lib/schema/calendar.json`](lib/schema/calendar.json).
+The `createCalendar` function accepts a single argument which is a calendar schema object. I don't have time to document that _right_ now (ahem it's in alpha) but it written as [JSON Schema] so maybe you can look in [`lib/schema/calendar.json`](lib/schema/calendar.json) (or the `calendar/schema` folder).
 
 ```js
 const MyExcellentDate = createCalendar({
@@ -159,7 +159,7 @@ date.second; // Number
 
 ### Formatting dates
 
-You can format dates with the `date.format` method. It uses template strings and works like this (thanks to @quarterto and odreian-date for this):
+You can format dates with the `date.format` method. It uses template strings and works like this (thanks to [@quarterto] and [odreian-date] for this):
 
 ```js
 date.format`${'Do'} ${'MMM'}, ${YY}`;
@@ -207,6 +207,7 @@ Copyright &copy; 2018, Rowan Manning
 
 
 
+[@quarterto]: https://github.com/quarterto
 [mit]: LICENSE
 [node.js]: https://nodejs.org/
 [npm]: https://www.npmjs.com/
