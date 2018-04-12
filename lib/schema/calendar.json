@@ -1,0 +1,215 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"description": "A representation of a calendar system",
+	"type": "object",
+	"properties": {
+		"calendar": { "$ref": "#/definitions/calendar" },
+		"periods": {
+			"type": "array",
+			"items": [
+				{ "$ref": "#/definitions/period" }
+			]
+		},
+		"yearNames": { "$ref": "#/definitions/yearNames" }
+	},
+	"additionalProperties": false,
+	"required": [
+		"calendar"
+	],
+
+	"definitions": {
+
+		"calendar": {
+			"type": "object",
+			"properties": {
+				"year": { "$ref": "#/definitions/calendarYear" },
+				"week": { "$ref": "#/definitions/calendarWeek" },
+				"time": { "$ref": "#/definitions/calendarTime" },
+				"timestampOffset": {
+					"type": "integer",
+					"multipleOf": 1,
+					"minimum": 0
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"year",
+				"week"
+			]
+		},
+
+		"calendarYear": {
+			"type": "object",
+			"properties": {
+				"leapYearFrequency": {
+					"type": "integer",
+					"multipleOf": 1,
+					"minimum": 0
+				},
+				"leapYearStart": {
+					"type": "integer",
+					"multipleOf": 1,
+					"minimum": 1
+				},
+				"months": {
+					"type": "array",
+					"items": [
+						{ "$ref": "#/definitions/calendarMonth" }
+					]
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"months"
+			]
+		},
+
+		"calendarMonth": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"minLength": 1
+				},
+				"abbr": {
+					"type": "string",
+					"minLength": 1
+				},
+				"long": {
+					"type": "string",
+					"minLength": 1
+				},
+				"days": {
+					"type": "integer",
+					"multipleOf": 1,
+					"minimum": 0
+				},
+				"daysInLeapYear": {
+					"type": "integer",
+					"multipleOf": 1,
+					"minimum": 0
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"name",
+				"days"
+			]
+		},
+
+		"calendarWeek": {
+			"type": "object",
+			"properties": {
+				"offset": {
+					"type": "integer",
+					"multipleOf": 1,
+					"minimum": 0
+				},
+				"days": {
+					"type": "array",
+					"items": [
+						{ "$ref": "#/definitions/calendarWeekDay" }
+					]
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"days"
+			]
+		},
+
+		"calendarWeekDay": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"minLength": 1
+				},
+				"abbr": {
+					"type": "string",
+					"minLength": 1
+				},
+				"long": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"name"
+			]
+		},
+
+		"calendarTime": {
+			"type": "object",
+			"properties": {
+				"hoursInDay": {
+					"type": "integer",
+					"multipleOf": 1,
+					"exclusiveMinimum": 0
+				},
+				"minutesInHour": {
+					"type": "integer",
+					"multipleOf": 1,
+					"exclusiveMinimum": 0
+				},
+				"secondsInMinute": {
+					"type": "integer",
+					"multipleOf": 1,
+					"exclusiveMinimum": 0
+				},
+				"anteMeridiemLabel": {
+					"type": "string",
+					"minLength": 1
+				},
+				"postMeridiemLabel": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			"additionalProperties": false
+		},
+
+		"period": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"minLength": 1
+				},
+				"abbr": {
+					"type": "string",
+					"minLength": 1
+				},
+				"long": {
+					"type": "string",
+					"minLength": 1
+				},
+				"startYear": {
+					"type": "integer",
+					"multipleOf": 1
+				},
+				"endYear": {
+					"type": "integer",
+					"multipleOf": 1
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"name"
+			]
+		},
+
+		"yearNames": {
+			"type": "object",
+			"patternProperties": {
+				"^-?\\d+$": {
+					"type": "string",
+					"minLength": 1
+				}
+			},
+			"additionalProperties": false
+		}
+
+	}
+}
