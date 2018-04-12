@@ -24,7 +24,7 @@ describe('lib/dream-date', () => {
 		let calendar;
 
 		beforeEach(() => {
-			calendar = new DreamDate();
+			calendar = new DreamDate(0);
 		});
 
 		it('extends DreamDateFormatter', () => {
