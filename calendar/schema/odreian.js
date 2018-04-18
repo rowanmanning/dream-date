@@ -6,62 +6,62 @@ module.exports = {
 			months: [
 				{
 					name: 'Gathering',
-					long: 'the Month of Gathering',
+					long: 'Month of Gathering',
 					days: 30
 				},
 				{
 					name: 'Dry',
-					long: 'the Month of Dry',
+					long: 'Month of Dry',
 					days: 30
 				},
 				{
 					name: 'Grass',
-					long: 'the Month of Grass',
+					long: 'Month of Grass',
 					days: 30
 				},
 				{
 					name: 'Flower',
-					long: 'the Month of Flower',
+					long: 'Month of Flower',
 					days: 30
 				},
 				{
 					name: 'Fallow',
-					long: 'the Month of Fallow',
+					long: 'Month of Fallow',
 					days: 30
 				},
 				{
 					name: 'Hay',
-					long: 'the Month of Hay',
+					long: 'Month of Hay',
 					days: 30
 				},
 				{
 					name: 'Harvest',
-					long: 'the Month of Harvest',
+					long: 'Month of Harvest',
 					days: 30
 				},
 				{
 					name: 'Barley',
-					long: 'the Month of Barley',
+					long: 'Month of Barley',
 					days: 30
 				},
 				{
 					name: 'Wine',
-					long: 'the Month of Wine',
+					long: 'Month of Wine',
 					days: 30
 				},
 				{
 					name: 'Slaughter',
-					long: 'the Month of Slaughter',
+					long: 'Month of Slaughter',
 					days: 30
 				},
 				{
 					name: 'Wolves',
-					long: 'the Month of Wolves',
+					long: 'Month of Wolves',
 					days: 30
 				},
 				{
 					name: 'Frost',
-					long: 'the Month of Frost',
+					long: 'Month of Frost',
 					days: 30
 				}
 			]

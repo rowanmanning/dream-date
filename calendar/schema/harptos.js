@@ -83,5 +83,12 @@ module.exports = {
 		week: {
 			days: []
 		}
-	}
+	},
+	periods: [
+		{
+			name: 'Dale Reckoning',
+			abbr: 'DR',
+			startYear: 1
+		}
+	]
 };
