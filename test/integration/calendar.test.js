@@ -22,7 +22,7 @@ describe('calendar', () => {
 
 					for (const [property, expectedValue] of Object.entries(test.expect)) {
 						it(`has the correct \`${property}\` property`, () => {
-							if (Array.isArray(expectedValue)) {
+							if (typeof expectedValue === 'object' && expectedValue !== null) {
 								assert.deepEqual(date[property], expectedValue);
 							} else {
 								assert.strictEqual(date[property], expectedValue);

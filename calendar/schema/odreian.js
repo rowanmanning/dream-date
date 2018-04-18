@@ -131,5 +131,11 @@ module.exports = {
 			long: 'Age of Nine Kings',
 			startYear: 1571
 		}
+	],
+	moons: [
+		{
+			name: 'Moon',
+			secondsInCycle: 60 * 60 * 24 * 30
+		}
 	]
 };

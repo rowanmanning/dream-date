@@ -10,7 +10,13 @@
 				{ "$ref": "#/definitions/period" }
 			]
 		},
-		"yearNames": { "$ref": "#/definitions/yearNames" }
+		"yearNames": { "$ref": "#/definitions/yearNames" },
+		"moons": {
+			"type": "array",
+			"items": [
+				{ "$ref": "#/definitions/moon" }
+			]
+		}
 	},
 	"additionalProperties": false,
 	"required": [
@@ -209,6 +215,43 @@
 				}
 			},
 			"additionalProperties": false
+		},
+
+		"moon": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"minLength": 1
+				},
+				"abbr": {
+					"type": "string",
+					"minLength": 1
+				},
+				"long": {
+					"type": "string",
+					"minLength": 1
+				},
+				"secondsInCycle": {
+					"type": "integer",
+					"multipleOf": 1
+				},
+				"phases": {
+					"type": "array",
+					"minItems": 1,
+					"items": [
+						{
+							"type": "string",
+							"minLength": 1
+						}
+					]
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"name",
+				"secondsInCycle"
+			]
 		}
 
 	}

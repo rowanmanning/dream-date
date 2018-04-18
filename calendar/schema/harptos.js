@@ -1,5 +1,12 @@
 'use strict';
 
+// Lunar cycle length
+// http://forgottenrealms.wikia.com/wiki/Sel%C3%BBne_(moon)
+const minute = 60;
+const hour = minute * 60;
+const day = hour * 24;
+const lunarCycleLength = (day * 30) + (hour * 10) + (minute * 30);
+
 module.exports = {
 	calendar: {
 		year: {
@@ -89,6 +96,12 @@ module.exports = {
 			name: 'Dale Reckoning',
 			abbr: 'DR',
 			startYear: 1
+		}
+	],
+	moons: [
+		{
+			name: 'Selune',
+			secondsInCycle: lunarCycleLength
 		}
 	]
 };

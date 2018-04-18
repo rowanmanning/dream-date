@@ -113,5 +113,11 @@ module.exports = {
 			abbr: 'SF',
 			startYear: 1
 		}
+	],
+	moons: [
+		{
+			name: 'Moon',
+			secondsInCycle: 60 * 60 * 24 * 30
+		}
 	]
 };
