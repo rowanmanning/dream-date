@@ -51,7 +51,7 @@ describe('included odreian calendar', () => {
 				it(`has the correct \`${property}\` property`, () => {
 					// Punctuation doesn't match exactly, so we strip it
 					// (we also drop the "the")
-					const odreianValue = `${originalDate[property]}`.replace(/(,|the )/ig, '')
+					const odreianValue = `${originalDate[property]}`.replace(/(,|the )/ig, '');
 					assert.strictEqual(odreianValue, date[property]);
 				});
 			}

@@ -63,7 +63,10 @@ exports.tests = [
 
 	// Test basic year/month/date increments
 	{
-		input: 0,
+		inputs: [
+			[0],
+			[1, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 0,
 			year: 1,
@@ -75,7 +78,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (leapYear),
+		inputs: [
+			[(leapYear)],
+			[2, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 1,
 			year: 2,
@@ -87,7 +93,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (leapYear) + (month * 2),
+		inputs: [
+			[(leapYear) + (month * 2)],
+			[2, 3, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 1,
 			year: 2,
@@ -99,7 +108,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (leapYear) + (month * 2) + (day * 3),
+		inputs: [
+			[(leapYear) + (month * 2) + (day * 3)],
+			[2, 3, 4, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 1,
 			year: 2,
@@ -111,7 +123,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (leapYear + (year * 3)),
+		inputs: [
+			[(leapYear + (year * 3))],
+			[5, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 4,
 			year: 5,
@@ -126,7 +141,10 @@ exports.tests = [
 	// Test the first and last day of a month
 	// with an extra day on a leap year
 	{
-		input: (month) + (day * 5),
+		inputs: [
+			[(month) + (day * 5)],
+			[1, 2, 6, 0, 0, 0]
+		],
 		expect: {
 			isLeapYear: true,
 			monthIndex: 1,
@@ -136,7 +154,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (month) + (day * 6),
+		inputs: [
+			[(month) + (day * 6)],
+			[1, 3, 1, 0, 0, 0]
+		],
 		expect: {
 			isLeapYear: true,
 			monthIndex: 2,
@@ -149,7 +170,10 @@ exports.tests = [
 	// Test the first and last day of a month
 	// without an extra day on a non-leap year
 	{
-		input: (leapYear) + (month) + (day * 4),
+		inputs: [
+			[(leapYear) + (month) + (day * 4)],
+			[2, 2, 5, 0, 0, 0]
+		],
 		expect: {
 			isLeapYear: false,
 			monthIndex: 1,
@@ -159,7 +183,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (leapYear) + (month) + (day * 5),
+		inputs: [
+			[(leapYear) + (month) + (day * 5)],
+			[2, 3, 1, 0, 0, 0]
+		],
 		expect: {
 			isLeapYear: false,
 			monthIndex: 2,
@@ -171,7 +198,10 @@ exports.tests = [
 
 	// Test the last and first second of a day
 	{
-		input: (hour * 23) + (minute * 59) + (second * 59),
+		inputs: [
+			[(hour * 23) + (minute * 59) + (second * 59)],
+			[1, 1, 1, 23, 59, 59]
+		],
 		expect: {
 			isLeapYear: true,
 			dateIndex: 0,
@@ -182,7 +212,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (hour * 24) + (minute * 0) + (second * 0),
+		inputs: [
+			[(hour * 24) + (minute * 0) + (second * 0)],
+			[1, 1, 2, 0, 0, 0]
+		],
 		expect: {
 			isLeapYear: true,
 			dateIndex: 1,
@@ -195,7 +228,10 @@ exports.tests = [
 
 	// Test the last and first second of a month
 	{
-		input: (day * 4) + (hour * 23) + (minute * 59) + (second * 59),
+		inputs: [
+			[(day * 4) + (hour * 23) + (minute * 59) + (second * 59)],
+			[1, 1, 5, 23, 59, 59]
+		],
 		expect: {
 			isLeapYear: true,
 			monthIndex: 0,
@@ -206,7 +242,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (day * 4) + (hour * 24) + (minute * 0) + (second * 0),
+		inputs: [
+			[(day * 4) + (hour * 24) + (minute * 0) + (second * 0)],
+			[1, 2, 1, 0, 0, 0]
+		],
 		expect: {
 			isLeapYear: true,
 			monthIndex: 1,
@@ -219,7 +258,10 @@ exports.tests = [
 
 	// Test the last and first second across a leap year
 	{
-		input: (day * 15) + (hour * 23) + (minute * 59) + (second * 59),
+		inputs: [
+			[(day * 15) + (hour * 23) + (minute * 59) + (second * 59)],
+			[1, 3, 5, 23, 59, 59]
+		],
 		expect: {
 			isLeapYear: true,
 			yearIndex: 0,
@@ -230,7 +272,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (day * 15) + (hour * 24) + (minute * 0) + (second * 0),
+		inputs: [
+			[(day * 15) + (hour * 24) + (minute * 0) + (second * 0)],
+			[2, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			isLeapYear: false,
 			yearIndex: 1,

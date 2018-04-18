@@ -59,7 +59,10 @@ exports.tests = [
 
 	// Test basic year/month/date increments
 	{
-		input: 0,
+		inputs: [
+			[0],
+			[1, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 0,
 			year: 1,
@@ -75,7 +78,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (year),
+		inputs: [
+			[(year)],
+			[2, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 1,
 			year: 2,
@@ -91,7 +97,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (year) + (month * 2),
+		inputs: [
+			[(year) + (month * 2)],
+			[2, 3, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 1,
 			year: 2,
@@ -107,7 +116,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (year) + (month * 2) + (day * 3),
+		inputs: [
+			[(year) + (month * 2) + (day * 3)],
+			[2, 3, 4, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 1,
 			year: 2,
@@ -125,7 +137,10 @@ exports.tests = [
 
 	// Test the last and first second of a day
 	{
-		input: (hour * 23) + (minute * 59) + (second * 59),
+		inputs: [
+			[(hour * 23) + (minute * 59) + (second * 59)],
+			[1, 1, 1, 23, 59, 59]
+		],
 		expect: {
 			dateIndex: 0,
 			date: 1,
@@ -137,7 +152,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (hour * 24) + (minute * 0) + (second * 0),
+		inputs: [
+			[(hour * 24) + (minute * 0) + (second * 0)],
+			[1, 1, 2, 0, 0, 0]
+		],
 		expect: {
 			dateIndex: 1,
 			date: 2,
@@ -151,7 +169,10 @@ exports.tests = [
 
 	// Test the last and first second of a month
 	{
-		input: (day * 4) + (hour * 23) + (minute * 59) + (second * 59),
+		inputs: [
+			[(day * 4) + (hour * 23) + (minute * 59) + (second * 59)],
+			[1, 1, 5, 23, 59, 59]
+		],
 		expect: {
 			monthIndex: 0,
 			month: 1,
@@ -161,7 +182,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (day * 4) + (hour * 24) + (minute * 0) + (second * 0),
+		inputs: [
+			[(day * 4) + (hour * 24) + (minute * 0) + (second * 0)],
+			[1, 2, 1, 0, 0, 0]
+		],
 		expect: {
 			monthIndex: 1,
 			month: 2,
@@ -173,7 +197,10 @@ exports.tests = [
 
 	// Test the last and first second of a year
 	{
-		input: (day * 14) + (hour * 23) + (minute * 59) + (second * 59),
+		inputs: [
+			[(day * 14) + (hour * 23) + (minute * 59) + (second * 59)],
+			[1, 2, 5, 23, 59, 59]
+		],
 		expect: {
 			yearIndex: 0,
 			year: 1,
@@ -183,7 +210,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (day * 14) + (hour * 24) + (minute * 0) + (second * 0),
+		inputs: [
+			[(day * 14) + (hour * 24) + (minute * 0) + (second * 0)],
+			[2, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 1,
 			year: 2,

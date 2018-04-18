@@ -85,7 +85,10 @@ exports.tests = [
 
 	// Test basic year/month/date increments
 	{
-		input: 0,
+		inputs: [
+			[0],
+			[1, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 0,
 			year: 1,
@@ -95,7 +98,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (year * 2),
+		inputs: [
+			[(year * 2)],
+			[3, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 2,
 			year: 3,
@@ -105,7 +111,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (year * 3),
+		inputs: [
+			[(year * 3)],
+			[4, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 3,
 			year: 4,
@@ -115,7 +124,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (year * 4),
+		inputs: [
+			[(year * 4)],
+			[5, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 4,
 			year: 5,
@@ -125,7 +137,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (year * 8),
+		inputs: [
+			[(year * 8)],
+			[9, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 8,
 			year: 9,
@@ -135,7 +150,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (year * 11),
+		inputs: [
+			[(year * 11)],
+			[12, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 11,
 			year: 12,
@@ -145,7 +163,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (year * 12),
+		inputs: [
+			[(year * 12)],
+			[13, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 12,
 			year: 13,

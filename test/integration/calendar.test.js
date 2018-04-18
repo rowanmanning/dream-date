@@ -13,23 +13,26 @@ describe('calendar', () => {
 
 		describe(`${fileName} schema`, () => {
 			for (const [index, test] of Object.entries(tests)) {
-				describe(`date #${index} (input ${test.input})`, () => {
-					let date;
+				describe(`date #${index}`, () => {
+					for (const input of test.inputs) {
+						describe(`input: ${input.join(', ')}`, () => {
+							let date;
 
-					before(() => {
-						date = new CustomDate(test.input);
-					});
+							before(() => {
+								date = new CustomDate(...input);
+							});
 
-					for (const [property, expectedValue] of Object.entries(test.expect)) {
-						it(`has the correct \`${property}\` property`, () => {
-							if (typeof expectedValue === 'object' && expectedValue !== null) {
-								assert.deepEqual(date[property], expectedValue);
-							} else {
-								assert.strictEqual(date[property], expectedValue);
+							for (const [property, expectedValue] of Object.entries(test.expect)) {
+								it(`has the correct \`${property}\` property`, () => {
+									if (typeof expectedValue === 'object' && expectedValue !== null) {
+										assert.deepEqual(date[property], expectedValue);
+									} else {
+										assert.strictEqual(date[property], expectedValue);
+									}
+								});
 							}
 						});
 					}
-
 				});
 			}
 		});

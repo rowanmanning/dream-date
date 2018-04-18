@@ -47,7 +47,10 @@ exports.tests = [
 
 	// Test basic year/month/date increments
 	{
-		input: 0,
+		inputs: [
+			[0],
+			[1, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 0,
 			year: 1,
@@ -59,7 +62,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (leapYear),
+		inputs: [
+			[(leapYear)],
+			[2, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 1,
 			year: 2,
@@ -71,7 +77,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (leapYear + year),
+		inputs: [
+			[(leapYear + year)],
+			[3, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 2,
 			year: 3,
@@ -85,7 +94,10 @@ exports.tests = [
 
 	// Test specific days for leap year
 	{
-		input: (day * 4),
+		inputs: [
+			[(day * 4)],
+			[1, 1, 5, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 0,
 			year: 1,
@@ -97,7 +109,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (day * 5),
+		inputs: [
+			[(day * 5)],
+			[1, 2, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 0,
 			year: 1,
@@ -111,7 +126,10 @@ exports.tests = [
 
 	// Test specific days for non leap year
 	{
-		input: (leapYear) + (day * 4),
+		inputs: [
+			[(leapYear) + (day * 4)],
+			[2, 1, 5, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 1,
 			year: 2,
@@ -123,7 +141,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (leapYear) + (day * 5),
+		inputs: [
+			[(leapYear) + (day * 5)],
+			[3, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			yearIndex: 2,
 			year: 3,

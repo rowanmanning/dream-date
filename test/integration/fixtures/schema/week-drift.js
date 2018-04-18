@@ -44,7 +44,10 @@ exports.tests = [
 
 	// Test week drifting
 	{
-		input: 0,
+		inputs: [
+			[0],
+			[1, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			dateIndex: 0,
 			date: 1,
@@ -52,7 +55,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (day),
+		inputs: [
+			[(day)],
+			[1, 1, 2, 0, 0, 0]
+		],
 		expect: {
 			dateIndex: 1,
 			date: 2,
@@ -60,7 +66,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (day * 2),
+		inputs: [
+			[(day * 2)],
+			[1, 1, 3, 0, 0, 0]
+		],
 		expect: {
 			dateIndex: 2,
 			date: 3,
@@ -68,7 +77,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (day * 3),
+		inputs: [
+			[(day * 3)],
+			[1, 1, 4, 0, 0, 0]
+		],
 		expect: {
 			dateIndex: 3,
 			date: 4,
@@ -76,7 +88,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (day * 4),
+		inputs: [
+			[(day * 4)],
+			[1, 1, 5, 0, 0, 0]
+		],
 		expect: {
 			dateIndex: 4,
 			date: 5,
@@ -84,7 +99,10 @@ exports.tests = [
 		}
 	},
 	{
-		input: (day * 5),
+		inputs: [
+			[(day * 5)],
+			[2, 1, 1, 0, 0, 0]
+		],
 		expect: {
 			dateIndex: 0,
 			date: 1,
