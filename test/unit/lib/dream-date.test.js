@@ -21,20 +21,44 @@ describe('lib/dream-date', () => {
 	});
 
 	describe('new DreamDate()', () => {
-		let calendar;
+		let date;
 
 		beforeEach(() => {
-			calendar = new DreamDate(0);
+			date = new DreamDate(0);
 		});
 
 		it('extends DreamDateFormatter', () => {
-			assert.instanceOf(calendar, DreamDateFormatter);
+			assert.instanceOf(date, DreamDateFormatter);
+		});
+
+		xdescribe('.add(components)', () => {
+
+			beforeEach(() => {
+				DreamDate.schema = {
+					conversions: {
+						secondsInWeek: 10000,
+						secondsInDay: 1000,
+						secondsInHour: 100,
+						secondsInMinute: 10
+					}
+				};
+				DreamDate.secondsInYear = sinon.stub().returns(100000);
+				sinon.stub(date, 'yearIndex').get(() => 10);
+				date.timestamp = 500000;
+			});
+
+			it('creates a new date object', () => {
+				const added = date.add({});
+				assert.instanceOf(added, DreamDate);
+				assert.notStrictEqual(added, date);
+			});
+
 		});
 
 		describe('.timestamp', () => {
 
 			it('is set to `0`', () => {
-				assert.strictEqual(calendar.timestamp, 0);
+				assert.strictEqual(date.timestamp, 0);
 			});
 
 		});
@@ -48,8 +72,8 @@ describe('lib/dream-date', () => {
 						secondsInHour: 3600
 					}
 				};
-				calendar.timestamp = 93725;
-				assert.strictEqual(calendar.hour, 2);
+				date.timestamp = 93725;
+				assert.strictEqual(date.hour, 2);
 			});
 
 		});
@@ -67,8 +91,8 @@ describe('lib/dream-date', () => {
 			describe('when `.hour` is before the meridiem', () => {
 
 				it('is set to the correct hour', () => {
-					sinon.stub(calendar, 'hour').get(() => 8);
-					assert.strictEqual(calendar.hourInMeridiem, 8);
+					sinon.stub(date, 'hour').get(() => 8);
+					assert.strictEqual(date.hourInMeridiem, 8);
 				});
 
 			});
@@ -76,8 +100,8 @@ describe('lib/dream-date', () => {
 			describe('when `.hour` is after the meridiem', () => {
 
 				it('is set to the correct meridiem label', () => {
-					sinon.stub(calendar, 'hour').get(() => 18);
-					assert.strictEqual(calendar.hourInMeridiem, 6);
+					sinon.stub(date, 'hour').get(() => 18);
+					assert.strictEqual(date.hourInMeridiem, 6);
 				});
 
 			});
@@ -103,8 +127,8 @@ describe('lib/dream-date', () => {
 			describe('when `.hour` is before the meridiem', () => {
 
 				it('is set to the correct meridiem label', () => {
-					sinon.stub(calendar, 'hour').get(() => 8);
-					assert.strictEqual(calendar.meridiem, 'am');
+					sinon.stub(date, 'hour').get(() => 8);
+					assert.strictEqual(date.meridiem, 'am');
 				});
 
 			});
@@ -112,8 +136,8 @@ describe('lib/dream-date', () => {
 			describe('when `.hour` is after the meridiem', () => {
 
 				it('is set to the correct meridiem label', () => {
-					sinon.stub(calendar, 'hour').get(() => 18);
-					assert.strictEqual(calendar.meridiem, 'pm');
+					sinon.stub(date, 'hour').get(() => 18);
+					assert.strictEqual(date.meridiem, 'pm');
 				});
 
 			});
@@ -129,8 +153,8 @@ describe('lib/dream-date', () => {
 						secondsInMinute: 60
 					}
 				};
-				calendar.timestamp = 3725;
-				assert.strictEqual(calendar.minute, 2);
+				date.timestamp = 3725;
+				assert.strictEqual(date.minute, 2);
 			});
 
 		});
@@ -143,8 +167,8 @@ describe('lib/dream-date', () => {
 						secondsInMinute: 60
 					}
 				};
-				calendar.timestamp = 65;
-				assert.strictEqual(calendar.second, 5);
+				date.timestamp = 65;
+				assert.strictEqual(date.second, 5);
 			});
 
 		});

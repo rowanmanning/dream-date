@@ -21,23 +21,23 @@ describe('lib/dream-date-formatter', () => {
 	});
 
 	describe('new DreamDateFormatter()', () => {
-		let calendar;
+		let date;
 
 		beforeEach(() => {
-			calendar = new DreamDateFormatter();
+			date = new DreamDateFormatter();
 		});
 
 		describe('.format`template`', () => {
 			let returnValue;
 
 			beforeEach(() => {
-				calendar.template = sinon.stub().returns('mock-template');
-				returnValue = calendar.format`the ${'D'} of ${'MMM'}`;
+				date.template = sinon.stub().returns('mock-template');
+				returnValue = date.format`the ${'D'} of ${'MMM'}`;
 			});
 
 			it('it calls the `template` method with the expected arguments', () => {
-				assert.calledOnce(calendar.template);
-				assert.calledWithExactly(calendar.template, ['the ', ' of ', ''], 'D', 'MMM');
+				assert.calledOnce(date.template);
+				assert.calledWithExactly(date.template, ['the ', ' of ', ''], 'D', 'MMM');
 			});
 
 			it('returns the templated string', () => {
@@ -53,9 +53,9 @@ describe('lib/dream-date-formatter', () => {
 		describe('.template`template`', () => {
 
 			it('returns the requested properties as a string', () => {
-				calendar.date = '1';
-				calendar.monthName = 'Month1';
-				assert.strictEqual(calendar.template`the ${'D'} of ${'MMM'}`, 'the 1 of Month1');
+				date.date = '1';
+				date.monthName = 'Month1';
+				assert.strictEqual(date.template`the ${'D'} of ${'MMM'}`, 'the 1 of Month1');
 			});
 
 		});
@@ -63,8 +63,8 @@ describe('lib/dream-date-formatter', () => {
 		describe('.Y', () => {
 
 			it('is set to the absolute year', () => {
-				calendar.year = 123;
-				assert.strictEqual(calendar.Y, '123');
+				date.year = 123;
+				assert.strictEqual(date.Y, '123');
 			});
 
 		});
@@ -72,18 +72,18 @@ describe('lib/dream-date-formatter', () => {
 		describe('.YY', () => {
 
 			it('is set to the year and period abbreviations', () => {
-				calendar.periodAbbreviations = ['PA', 'PB'];
-				calendar.periodYears = [1, 2];
-				assert.strictEqual(calendar.YY, '1PA/2PB');
+				date.periodAbbreviations = ['PA', 'PB'];
+				date.periodYears = [1, 2];
+				assert.strictEqual(date.YY, '1PA/2PB');
 
-				calendar.periodAbbreviations = ['PA'];
-				calendar.periodYears = [100];
-				assert.strictEqual(calendar.YY, '100PA');
+				date.periodAbbreviations = ['PA'];
+				date.periodYears = [100];
+				assert.strictEqual(date.YY, '100PA');
 
-				calendar.year = 123;
-				calendar.periodAbbreviations = [];
-				calendar.periodYears = [];
-				assert.strictEqual(calendar.YY, '123');
+				date.year = 123;
+				date.periodAbbreviations = [];
+				date.periodYears = [];
+				assert.strictEqual(date.YY, '123');
 			});
 
 		});
@@ -91,18 +91,18 @@ describe('lib/dream-date-formatter', () => {
 		describe('.YYY', () => {
 
 			it('is set to the year and period names', () => {
-				calendar.periodNames = ['PeriodA', 'PeriodB'];
-				calendar.periodYears = [1, 2];
-				assert.strictEqual(calendar.YYY, '1 PeriodA/2 PeriodB');
+				date.periodNames = ['PeriodA', 'PeriodB'];
+				date.periodYears = [1, 2];
+				assert.strictEqual(date.YYY, '1 PeriodA/2 PeriodB');
 
-				calendar.periodNames = ['PeriodA'];
-				calendar.periodYears = [100];
-				assert.strictEqual(calendar.YYY, '100 PeriodA');
+				date.periodNames = ['PeriodA'];
+				date.periodYears = [100];
+				assert.strictEqual(date.YYY, '100 PeriodA');
 
-				calendar.year = 123;
-				calendar.periodNames = [];
-				calendar.periodYears = [];
-				assert.strictEqual(calendar.YYY, '123');
+				date.year = 123;
+				date.periodNames = [];
+				date.periodYears = [];
+				assert.strictEqual(date.YYY, '123');
 			});
 
 		});
@@ -110,18 +110,18 @@ describe('lib/dream-date-formatter', () => {
 		describe('.YYYY', () => {
 
 			it('is set to the year and period long names', () => {
-				calendar.periodLongNames = ['LongPeriodA', 'LongPeriodB'];
-				calendar.periodYears = [1, 2];
-				assert.strictEqual(calendar.YYYY, '1 LongPeriodA/2 LongPeriodB');
+				date.periodLongNames = ['LongPeriodA', 'LongPeriodB'];
+				date.periodYears = [1, 2];
+				assert.strictEqual(date.YYYY, '1 LongPeriodA/2 LongPeriodB');
 
-				calendar.periodLongNames = ['LongPeriodA'];
-				calendar.periodYears = [100];
-				assert.strictEqual(calendar.YYYY, '100 LongPeriodA');
+				date.periodLongNames = ['LongPeriodA'];
+				date.periodYears = [100];
+				assert.strictEqual(date.YYYY, '100 LongPeriodA');
 
-				calendar.year = 123;
-				calendar.periodLongNames = [];
-				calendar.periodYears = [];
-				assert.strictEqual(calendar.YYYY, '123');
+				date.year = 123;
+				date.periodLongNames = [];
+				date.periodYears = [];
+				assert.strictEqual(date.YYYY, '123');
 			});
 
 		});
@@ -129,8 +129,17 @@ describe('lib/dream-date-formatter', () => {
 		describe('.M', () => {
 
 			it('is set to the numeric month', () => {
-				calendar.month = 123;
-				assert.strictEqual(calendar.M, '123');
+				date.month = 123;
+				assert.strictEqual(date.M, '123');
+			});
+
+		});
+
+		describe('.Mz', () => {
+
+			it('is set to the padded month', () => {
+				date.monthPadded = '01';
+				assert.strictEqual(date.Mz, '01');
 			});
 
 		});
@@ -138,8 +147,8 @@ describe('lib/dream-date-formatter', () => {
 		describe('.Mo', () => {
 
 			it('is set to the the numeric month with an ordinal suffix', () => {
-				calendar.month = 123;
-				assert.strictEqual(calendar.Mo, '123mock-ordinal');
+				date.month = 123;
+				assert.strictEqual(date.Mo, '123mock-ordinal');
 			});
 
 		});
@@ -147,8 +156,8 @@ describe('lib/dream-date-formatter', () => {
 		describe('.MM', () => {
 
 			it('is set to the month abbreviated name', () => {
-				calendar.monthAbbreviation = 'mock-abbreviated-month';
-				assert.strictEqual(calendar.MM, 'mock-abbreviated-month');
+				date.monthAbbreviation = 'mock-abbreviated-month';
+				assert.strictEqual(date.MM, 'mock-abbreviated-month');
 			});
 
 		});
@@ -156,8 +165,8 @@ describe('lib/dream-date-formatter', () => {
 		describe('.MMM', () => {
 
 			it('is set to the month name', () => {
-				calendar.monthName = 'mock-month';
-				assert.strictEqual(calendar.MMM, 'mock-month');
+				date.monthName = 'mock-month';
+				assert.strictEqual(date.MMM, 'mock-month');
 			});
 
 		});
@@ -165,8 +174,8 @@ describe('lib/dream-date-formatter', () => {
 		describe('.MMMM', () => {
 
 			it('is set to the month long name', () => {
-				calendar.monthLongName = 'mock-long-month';
-				assert.strictEqual(calendar.MMMM, 'mock-long-month');
+				date.monthLongName = 'mock-long-month';
+				assert.strictEqual(date.MMMM, 'mock-long-month');
 			});
 
 		});
@@ -174,8 +183,17 @@ describe('lib/dream-date-formatter', () => {
 		describe('.D', () => {
 
 			it('is set to the numeric date', () => {
-				calendar.date = 123;
-				assert.strictEqual(calendar.D, '123');
+				date.date = 123;
+				assert.strictEqual(date.D, '123');
+			});
+
+		});
+
+		describe('.Dz', () => {
+
+			it('is set to the padded date', () => {
+				date.datePadded = '01';
+				assert.strictEqual(date.Dz, '01');
 			});
 
 		});
@@ -183,8 +201,8 @@ describe('lib/dream-date-formatter', () => {
 		describe('.Do', () => {
 
 			it('is set to the numeric date with an ordinal suffix', () => {
-				calendar.date = 123;
-				assert.strictEqual(calendar.Do, '123mock-ordinal');
+				date.date = 123;
+				assert.strictEqual(date.Do, '123mock-ordinal');
 			});
 
 		});
@@ -192,8 +210,8 @@ describe('lib/dream-date-formatter', () => {
 		describe('.d', () => {
 
 			it('is set to the current day of the week\'s index', () => {
-				calendar.dayIndex = 123;
-				assert.strictEqual(calendar.d, '123');
+				date.dayIndex = 123;
+				assert.strictEqual(date.d, '123');
 			});
 
 		});
@@ -201,8 +219,8 @@ describe('lib/dream-date-formatter', () => {
 		describe('.dd', () => {
 
 			it('is set to the day abbreviated name', () => {
-				calendar.dayAbbreviation = 'mock-abbreviated-day';
-				assert.strictEqual(calendar.dd, 'mock-abbreviated-day');
+				date.dayAbbreviation = 'mock-abbreviated-day';
+				assert.strictEqual(date.dd, 'mock-abbreviated-day');
 			});
 
 		});
@@ -210,8 +228,8 @@ describe('lib/dream-date-formatter', () => {
 		describe('.ddd', () => {
 
 			it('is set to the day name', () => {
-				calendar.dayName = 'mock-day';
-				assert.strictEqual(calendar.ddd, 'mock-day');
+				date.dayName = 'mock-day';
+				assert.strictEqual(date.ddd, 'mock-day');
 			});
 
 		});
@@ -219,8 +237,8 @@ describe('lib/dream-date-formatter', () => {
 		describe('.dddd', () => {
 
 			it('is set to the day long name', () => {
-				calendar.dayLongName = 'mock-long-day';
-				assert.strictEqual(calendar.dddd, 'mock-long-day');
+				date.dayLongName = 'mock-long-day';
+				assert.strictEqual(date.dddd, 'mock-long-day');
 			});
 
 		});
@@ -228,19 +246,26 @@ describe('lib/dream-date-formatter', () => {
 		describe('.H', () => {
 
 			it('is set to the numeric hour', () => {
-				calendar.hour = 12;
-				assert.strictEqual(calendar.H, '12');
+				date.hour = 12;
+				assert.strictEqual(date.H, '12');
+			});
+
+		});
+
+		describe('.Hz', () => {
+
+			it('is set to the padded hour', () => {
+				date.hourPadded = '01';
+				assert.strictEqual(date.Hz, '01');
 			});
 
 		});
 
 		describe('.HH', () => {
 
-			it('is set to the numeric hour with a leading zero', () => {
-				calendar.hour = 8;
-				assert.strictEqual(calendar.HH, '08');
-				calendar.hour = 11;
-				assert.strictEqual(calendar.HH, '11');
+			it('is an alias for `Hz`', () => {
+				sinon.stub(date, 'Hz').get(() => '01');
+				assert.strictEqual(date.HH, '01');
 			});
 
 		});
@@ -248,8 +273,8 @@ describe('lib/dream-date-formatter', () => {
 		describe('.h', () => {
 
 			it('is set to the numeric hour in meridiem', () => {
-				calendar.hourInMeridiem = 12;
-				assert.strictEqual(calendar.h, '12');
+				date.hourInMeridiem = 12;
+				assert.strictEqual(date.h, '12');
 			});
 
 		});
@@ -257,34 +282,97 @@ describe('lib/dream-date-formatter', () => {
 		describe('.a', () => {
 
 			it('is set to the meridiem name', () => {
-				calendar.meridiem = 'mock-meridiem';
-				assert.strictEqual(calendar.a, 'mock-meridiem');
+				date.meridiem = 'mock-meridiem';
+				assert.strictEqual(date.a, 'mock-meridiem');
+			});
+
+		});
+
+		describe('.m', () => {
+
+			it('is set to the numeric minute', () => {
+				date.minute = 123;
+				assert.strictEqual(date.m, '123');
+			});
+
+		});
+
+		describe('.mz', () => {
+
+			it('is set to the padded minute', () => {
+				date.minutePadded = '01';
+				assert.strictEqual(date.mz, '01');
 			});
 
 		});
 
 		describe('.mm', () => {
 
-			it('is set to the numeric minute with a leading zero', () => {
-				calendar.minute = 8;
-				assert.strictEqual(calendar.mm, '08');
-				calendar.minute = 11;
-				assert.strictEqual(calendar.mm, '11');
+			it('is an alias for `mz`', () => {
+				sinon.stub(date, 'mz').get(() => '01');
+				assert.strictEqual(date.mm, '01');
+			});
+
+		});
+
+		describe('.s', () => {
+
+			it('is set to the numeric second', () => {
+				date.second = 123;
+				assert.strictEqual(date.s, '123');
+			});
+
+		});
+
+		describe('.sz', () => {
+
+			it('is set to the padded second', () => {
+				date.secondPadded = '01';
+				assert.strictEqual(date.sz, '01');
 			});
 
 		});
 
 		describe('.ss', () => {
 
-			it('is set to the numeric second with a leading zero', () => {
-				calendar.second = 8;
-				assert.strictEqual(calendar.ss, '08');
-				calendar.second = 11;
-				assert.strictEqual(calendar.ss, '11');
+			it('is an alias for `sz`', () => {
+				sinon.stub(date, 'sz').get(() => '01');
+				assert.strictEqual(date.ss, '01');
 			});
 
 		});
 
+		describe('.PD', () => {
+
+			it('is set to a parsable date string', () => {
+				sinon.stub(date, 'YY').get(() => '1PA/2PB');
+				sinon.stub(date, 'Mz').get(() => '05');
+				sinon.stub(date, 'Dz').get(() => '07');
+				assert.strictEqual(date.PD, '1PA/2PB-05-07');
+			});
+
+		});
+
+		describe('.PT', () => {
+
+			it('is set to a parsable time string', () => {
+				sinon.stub(date, 'Hz').get(() => '08');
+				sinon.stub(date, 'mz').get(() => '09');
+				sinon.stub(date, 'sz').get(() => '10');
+				assert.strictEqual(date.PT, '08:09:10');
+			});
+
+		});
+
+		describe('.P', () => {
+
+			it('is set to a parsable date/time string', () => {
+				sinon.stub(date, 'PD').get(() => '1PA/2PB-05-07');
+				sinon.stub(date, 'PT').get(() => '08:09:10');
+				assert.strictEqual(date.P, '1PA/2PB-05-07 08:09:10');
+			});
+
+		});
 
 	});
 
