@@ -31,7 +31,7 @@ describe('lib/dream-date', () => {
 			assert.instanceOf(date, DreamDateFormatter);
 		});
 
-		xdescribe('.add(components)', () => {
+		describe('.add(components)', () => {
 
 			beforeEach(() => {
 				DreamDate.schema = {
@@ -43,7 +43,7 @@ describe('lib/dream-date', () => {
 					}
 				};
 				DreamDate.secondsInYear = sinon.stub().returns(100000);
-				sinon.stub(date, 'yearIndex').get(() => 10);
+				sinon.stub(date, 'yearIndex').get(() => 4);
 				date.timestamp = 500000;
 			});
 
@@ -51,6 +51,146 @@ describe('lib/dream-date', () => {
 				const added = date.add({});
 				assert.instanceOf(added, DreamDate);
 				assert.notStrictEqual(added, date);
+			});
+
+			describe('when the year component is positive', () => {
+
+				it('increments the timestamp by the correct amount', () => {
+					const timestamp = date.add({
+						year: 3
+					}).timestamp;
+					assert.calledThrice(DreamDate.secondsInYear);
+					assert.calledWithExactly(DreamDate.secondsInYear, 4);
+					assert.calledWithExactly(DreamDate.secondsInYear, 5);
+					assert.calledWithExactly(DreamDate.secondsInYear, 6);
+					assert.strictEqual(timestamp, 800000);
+				});
+
+			});
+
+			describe('when the year component is negative', () => {
+
+				it('decrements the timestamp by the correct amount', () => {
+					const timestamp = date.add({
+						year: -3
+					}).timestamp;
+					assert.calledThrice(DreamDate.secondsInYear);
+					assert.calledWithExactly(DreamDate.secondsInYear, 4);
+					assert.calledWithExactly(DreamDate.secondsInYear, 3);
+					assert.calledWithExactly(DreamDate.secondsInYear, 2);
+					assert.strictEqual(timestamp, 200000);
+				});
+
+			});
+
+			describe('when the week component is positive', () => {
+
+				it('increments the timestamp by the correct amount', () => {
+					const timestamp = date.add({
+						week: 1
+					}).timestamp;
+					assert.strictEqual(timestamp, 510000);
+				});
+
+			});
+
+			describe('when the week component is negative', () => {
+
+				it('increments the timestamp by the correct amount', () => {
+					const timestamp = date.add({
+						week: -1
+					}).timestamp;
+					assert.strictEqual(timestamp, 490000);
+				});
+
+			});
+
+			describe('when the day component is positive', () => {
+
+				it('increments the timestamp by the correct amount', () => {
+					const timestamp = date.add({
+						day: 1
+					}).timestamp;
+					assert.strictEqual(timestamp, 501000);
+				});
+
+			});
+
+			describe('when the day component is negative', () => {
+
+				it('increments the timestamp by the correct amount', () => {
+					const timestamp = date.add({
+						day: -1
+					}).timestamp;
+					assert.strictEqual(timestamp, 499000);
+				});
+
+			});
+
+			describe('when the hour component is positive', () => {
+
+				it('increments the timestamp by the correct amount', () => {
+					const timestamp = date.add({
+						hour: 1
+					}).timestamp;
+					assert.strictEqual(timestamp, 500100);
+				});
+
+			});
+
+			describe('when the hour component is negative', () => {
+
+				it('increments the timestamp by the correct amount', () => {
+					const timestamp = date.add({
+						hour: -1
+					}).timestamp;
+					assert.strictEqual(timestamp, 499900);
+				});
+
+			});
+
+			describe('when the minute component is positive', () => {
+
+				it('increments the timestamp by the correct amount', () => {
+					const timestamp = date.add({
+						minute: 1
+					}).timestamp;
+					assert.strictEqual(timestamp, 500010);
+				});
+
+			});
+
+			describe('when the minute component is negative', () => {
+
+				it('increments the timestamp by the correct amount', () => {
+					const timestamp = date.add({
+						minute: -1
+					}).timestamp;
+					assert.strictEqual(timestamp, 499990);
+				});
+
+			});
+
+			describe('when the second component is positive', () => {
+
+				it('increments the timestamp by the correct amount', () => {
+					const timestamp = date.add({
+						second: 1
+					}).timestamp;
+					assert.strictEqual(timestamp, 500001);
+				});
+
+			});
+
+			describe('when the second component is negative', () => {
+
+				it('increments the timestamp by the correct amount', () => {
+					const timestamp = date.add({
+						second: -1
+					}).timestamp;
+					assert.strictEqual(timestamp, 499999);
+				});
+
 			});
 
 		});
