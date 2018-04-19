@@ -65,7 +65,8 @@ exports.tests = [
 	{
 		inputs: [
 			[0],
-			[1, 1, 1, 0, 0, 0]
+			[1, 1, 1, 0, 0, 0],
+			['1-01-01 00:00:00']
 		],
 		expect: {
 			yearIndex: 0,
@@ -80,7 +81,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(leapYear)],
-			[2, 1, 1, 0, 0, 0]
+			[2, 1, 1, 0, 0, 0],
+			['2-01-01 00:00:00']
 		],
 		expect: {
 			yearIndex: 1,
@@ -95,7 +97,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(leapYear) + (month * 2)],
-			[2, 3, 1, 0, 0, 0]
+			[2, 3, 1, 0, 0, 0],
+			['2-03-01 00:00:00']
 		],
 		expect: {
 			yearIndex: 1,
@@ -110,7 +113,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(leapYear) + (month * 2) + (day * 3)],
-			[2, 3, 4, 0, 0, 0]
+			[2, 3, 4, 0, 0, 0],
+			['2-03-04 00:00:00']
 		],
 		expect: {
 			yearIndex: 1,
@@ -125,7 +129,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(leapYear + (year * 3))],
-			[5, 1, 1, 0, 0, 0]
+			[5, 1, 1, 0, 0, 0],
+			['5-01-01 00:00:00']
 		],
 		expect: {
 			yearIndex: 4,
@@ -143,7 +148,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(month) + (day * 5)],
-			[1, 2, 6, 0, 0, 0]
+			[1, 2, 6, 0, 0, 0],
+			['1-02-06 00:00:00']
 		],
 		expect: {
 			isLeapYear: true,
@@ -156,7 +162,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(month) + (day * 6)],
-			[1, 3, 1, 0, 0, 0]
+			[1, 3, 1, 0, 0, 0],
+			['1-03-01 00:00:00']
 		],
 		expect: {
 			isLeapYear: true,
@@ -172,7 +179,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(leapYear) + (month) + (day * 4)],
-			[2, 2, 5, 0, 0, 0]
+			[2, 2, 5, 0, 0, 0],
+			['2-02-05 00:00:00']
 		],
 		expect: {
 			isLeapYear: false,
@@ -185,7 +193,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(leapYear) + (month) + (day * 5)],
-			[2, 3, 1, 0, 0, 0]
+			[2, 3, 1, 0, 0, 0],
+			['2-03-01 00:00:00']
 		],
 		expect: {
 			isLeapYear: false,
@@ -200,7 +209,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(hour * 23) + (minute * 59) + (second * 59)],
-			[1, 1, 1, 23, 59, 59]
+			[1, 1, 1, 23, 59, 59],
+			['1-01-01 23:59:59']
 		],
 		expect: {
 			isLeapYear: true,
@@ -214,7 +224,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(hour * 24) + (minute * 0) + (second * 0)],
-			[1, 1, 2, 0, 0, 0]
+			[1, 1, 2, 0, 0, 0],
+			['1-01-02 00:00:00']
 		],
 		expect: {
 			isLeapYear: true,
@@ -230,7 +241,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 4) + (hour * 23) + (minute * 59) + (second * 59)],
-			[1, 1, 5, 23, 59, 59]
+			[1, 1, 5, 23, 59, 59],
+			['1-01-05 23:59:59']
 		],
 		expect: {
 			isLeapYear: true,
@@ -244,7 +256,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 4) + (hour * 24) + (minute * 0) + (second * 0)],
-			[1, 2, 1, 0, 0, 0]
+			[1, 2, 1, 0, 0, 0],
+			['1-02-01 00:00:00']
 		],
 		expect: {
 			isLeapYear: true,
@@ -260,7 +273,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 15) + (hour * 23) + (minute * 59) + (second * 59)],
-			[1, 3, 5, 23, 59, 59]
+			[1, 3, 5, 23, 59, 59],
+			['1-03-05 23:59:59']
 		],
 		expect: {
 			isLeapYear: true,
@@ -274,7 +288,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 15) + (hour * 24) + (minute * 0) + (second * 0)],
-			[2, 1, 1, 0, 0, 0]
+			[2, 1, 1, 0, 0, 0],
+			['2-01-01 00:00:00']
 		],
 		expect: {
 			isLeapYear: false,

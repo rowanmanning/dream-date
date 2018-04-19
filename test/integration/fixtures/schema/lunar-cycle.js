@@ -47,7 +47,8 @@ exports.tests = [
 	{
 		inputs: [
 			[0],
-			[1, 1, 1, 0, 0, 0]
+			[1, 1, 1, 0, 0, 0],
+			['1-01-01 00:00:00']
 		],
 		expect: {
 			moonPhaseIndices: {
@@ -67,7 +68,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 5)],
-			[1, 1, 6, 0, 0, 0]
+			[1, 1, 6, 0, 0, 0],
+			['1-01-06 00:00:00']
 		],
 		expect: {
 			moonPhaseIndices: {
@@ -87,7 +89,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 10)],
-			[1, 1, 11, 0, 0, 0]
+			[1, 1, 11, 0, 0, 0],
+			['1-01-11 00:00:00']
 		],
 		expect: {
 			moonPhaseIndices: {
@@ -107,7 +110,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 15)],
-			[1, 1, 16, 0, 0, 0]
+			[1, 1, 16, 0, 0, 0],
+			['1-01-16 00:00:00']
 		],
 		expect: {
 			moonPhaseIndices: {
@@ -127,7 +131,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 20)],
-			[1, 1, 21, 0, 0, 0]
+			[1, 1, 21, 0, 0, 0],
+			['1-01-21 00:00:00']
 		],
 		expect: {
 			moonPhaseIndices: {

@@ -46,7 +46,8 @@ exports.tests = [
 	{
 		inputs: [
 			[0],
-			[1, 1, 1, 0, 0, 0]
+			[1, 1, 1, 0, 0, 0],
+			['1-01-01 00:00:00']
 		],
 		expect: {
 			dateIndex: 0,
@@ -57,7 +58,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day)],
-			[1, 1, 2, 0, 0, 0]
+			[1, 1, 2, 0, 0, 0],
+			['1-01-02 00:00:00']
 		],
 		expect: {
 			dateIndex: 1,
@@ -68,7 +70,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 2)],
-			[1, 1, 3, 0, 0, 0]
+			[1, 1, 3, 0, 0, 0],
+			['1-01-03 00:00:00']
 		],
 		expect: {
 			dateIndex: 2,
@@ -79,7 +82,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 3)],
-			[1, 1, 4, 0, 0, 0]
+			[1, 1, 4, 0, 0, 0],
+			['1-01-04 00:00:00']
 		],
 		expect: {
 			dateIndex: 3,
@@ -90,7 +94,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 4)],
-			[1, 1, 5, 0, 0, 0]
+			[1, 1, 5, 0, 0, 0],
+			['1-01-05 00:00:00']
 		],
 		expect: {
 			dateIndex: 4,
@@ -101,7 +106,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 5)],
-			[2, 1, 1, 0, 0, 0]
+			[2, 1, 1, 0, 0, 0],
+			['2-01-01 00:00:00']
 		],
 		expect: {
 			dateIndex: 0,

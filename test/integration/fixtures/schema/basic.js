@@ -61,7 +61,8 @@ exports.tests = [
 	{
 		inputs: [
 			[0],
-			[1, 1, 1, 0, 0, 0]
+			[1, 1, 1, 0, 0, 0],
+			['1-01-01 00:00:00']
 		],
 		expect: {
 			yearIndex: 0,
@@ -80,7 +81,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(year)],
-			[2, 1, 1, 0, 0, 0]
+			[2, 1, 1, 0, 0, 0],
+			['2-01-01 00:00:00']
 		],
 		expect: {
 			yearIndex: 1,
@@ -99,7 +101,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(year) + (month * 2)],
-			[2, 3, 1, 0, 0, 0]
+			[2, 3, 1, 0, 0, 0],
+			['2-03-01 00:00:00']
 		],
 		expect: {
 			yearIndex: 1,
@@ -118,7 +121,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(year) + (month * 2) + (day * 3)],
-			[2, 3, 4, 0, 0, 0]
+			[2, 3, 4, 0, 0, 0],
+			['2-03-04 00:00:00']
 		],
 		expect: {
 			yearIndex: 1,
@@ -139,7 +143,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(hour * 23) + (minute * 59) + (second * 59)],
-			[1, 1, 1, 23, 59, 59]
+			[1, 1, 1, 23, 59, 59],
+			['1-01-01 23:59:59']
 		],
 		expect: {
 			dateIndex: 0,
@@ -154,7 +159,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(hour * 24) + (minute * 0) + (second * 0)],
-			[1, 1, 2, 0, 0, 0]
+			[1, 1, 2, 0, 0, 0],
+			['1-01-02 00:00:00']
 		],
 		expect: {
 			dateIndex: 1,
@@ -171,7 +177,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 4) + (hour * 23) + (minute * 59) + (second * 59)],
-			[1, 1, 5, 23, 59, 59]
+			[1, 1, 5, 23, 59, 59],
+			['1-01-05 23:59:59']
 		],
 		expect: {
 			monthIndex: 0,
@@ -184,7 +191,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 4) + (hour * 24) + (minute * 0) + (second * 0)],
-			[1, 2, 1, 0, 0, 0]
+			[1, 2, 1, 0, 0, 0],
+			['1-02-01 00:00:00']
 		],
 		expect: {
 			monthIndex: 1,
@@ -199,7 +207,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 14) + (hour * 23) + (minute * 59) + (second * 59)],
-			[1, 2, 5, 23, 59, 59]
+			[1, 2, 5, 23, 59, 59],
+			['1-02-05 23:59:59']
 		],
 		expect: {
 			yearIndex: 0,
@@ -212,7 +221,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 14) + (hour * 24) + (minute * 0) + (second * 0)],
-			[2, 1, 1, 0, 0, 0]
+			[2, 1, 1, 0, 0, 0],
+			['2-01-01 00:00:00']
 		],
 		expect: {
 			yearIndex: 1,

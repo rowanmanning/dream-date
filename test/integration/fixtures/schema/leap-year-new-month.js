@@ -49,7 +49,8 @@ exports.tests = [
 	{
 		inputs: [
 			[0],
-			[1, 1, 1, 0, 0, 0]
+			[1, 1, 1, 0, 0, 0],
+			['1-01-01 00:00:00']
 		],
 		expect: {
 			yearIndex: 0,
@@ -64,7 +65,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(leapYear)],
-			[2, 1, 1, 0, 0, 0]
+			[2, 1, 1, 0, 0, 0],
+			['2-01-01 00:00:00']
 		],
 		expect: {
 			yearIndex: 1,
@@ -79,7 +81,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(leapYear + year)],
-			[3, 1, 1, 0, 0, 0]
+			[3, 1, 1, 0, 0, 0],
+			['3-01-01 00:00:00']
 		],
 		expect: {
 			yearIndex: 2,
@@ -96,7 +99,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(day * 4)],
-			[1, 1, 5, 0, 0, 0]
+			[1, 1, 5, 0, 0, 0],
+			['1-01-05 00:00:00']
 		],
 		expect: {
 			yearIndex: 0,
@@ -128,7 +132,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(leapYear) + (day * 4)],
-			[2, 1, 5, 0, 0, 0]
+			[2, 1, 5, 0, 0, 0],
+			['2-01-05 00:00:00']
 		],
 		expect: {
 			yearIndex: 1,
@@ -143,7 +148,8 @@ exports.tests = [
 	{
 		inputs: [
 			[(leapYear) + (day * 5)],
-			[3, 1, 1, 0, 0, 0]
+			[3, 1, 1, 0, 0, 0],
+			['3-01-01 00:00:00']
 		],
 		expect: {
 			yearIndex: 2,

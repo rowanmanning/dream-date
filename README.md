@@ -188,6 +188,9 @@ There are loads of available formats you can use:
   * `a`: The current meridiem label
   * `mm`: The current minute of the hour (padded with zero)
   * `ss`: The current minute of the minute (padded with zero)
+  * `PD`: The date in a parsable format
+  * `Pt`: The time in a parsable format
+  * `P`: The date and time in a parsable format
 
 
 ## Contributing
