@@ -16,15 +16,22 @@ describe('lib/dream-date', () => {
 
 	it('exports a class constructor', () => {
 		assert.isFunction(DreamDate);
-		assert.throws(() => DreamDate(0), /cannot be invoked without/);
-		assert.doesNotThrow(() => new DreamDate(0));
+		assert.throws(DreamDate, /cannot be invoked without/);
 	});
 
 	describe('new DreamDate()', () => {
+		it('throws an error', () => {
+			assert.throws(() => new DreamDate(), 'You cannot create an instance of DreamDate, it is designed to be extended');
+		});
+	});
+
+	describe('new ExtendedDreamDate()', () => {
 		let date;
+		let ExtendedDreamDate;
 
 		beforeEach(() => {
-			date = new DreamDate(0);
+			ExtendedDreamDate = class ExtendedDreamDate extends DreamDate {};
+			date = new ExtendedDreamDate(0);
 		});
 
 		it('extends DreamDateFormatter', () => {
@@ -34,7 +41,7 @@ describe('lib/dream-date', () => {
 		describe('.add(components)', () => {
 
 			beforeEach(() => {
-				DreamDate.schema = {
+				ExtendedDreamDate.schema = {
 					conversions: {
 						secondsInWeek: 10000,
 						secondsInDay: 1000,
@@ -42,7 +49,7 @@ describe('lib/dream-date', () => {
 						secondsInMinute: 10
 					}
 				};
-				DreamDate.secondsInYear = sinon.stub().returns(100000);
+				ExtendedDreamDate.secondsInYear = sinon.stub().returns(100000);
 				sinon.stub(date, 'yearIndex').get(() => 4);
 				date.timestamp = 500000;
 			});
@@ -59,10 +66,10 @@ describe('lib/dream-date', () => {
 					const timestamp = date.add({
 						year: 3
 					}).timestamp;
-					assert.calledThrice(DreamDate.secondsInYear);
-					assert.calledWithExactly(DreamDate.secondsInYear, 4);
-					assert.calledWithExactly(DreamDate.secondsInYear, 5);
-					assert.calledWithExactly(DreamDate.secondsInYear, 6);
+					assert.calledThrice(ExtendedDreamDate.secondsInYear);
+					assert.calledWithExactly(ExtendedDreamDate.secondsInYear, 4);
+					assert.calledWithExactly(ExtendedDreamDate.secondsInYear, 5);
+					assert.calledWithExactly(ExtendedDreamDate.secondsInYear, 6);
 					assert.strictEqual(timestamp, 800000);
 				});
 
@@ -74,10 +81,10 @@ describe('lib/dream-date', () => {
 					const timestamp = date.add({
 						year: -3
 					}).timestamp;
-					assert.calledThrice(DreamDate.secondsInYear);
-					assert.calledWithExactly(DreamDate.secondsInYear, 4);
-					assert.calledWithExactly(DreamDate.secondsInYear, 3);
-					assert.calledWithExactly(DreamDate.secondsInYear, 2);
+					assert.calledThrice(ExtendedDreamDate.secondsInYear);
+					assert.calledWithExactly(ExtendedDreamDate.secondsInYear, 4);
+					assert.calledWithExactly(ExtendedDreamDate.secondsInYear, 3);
+					assert.calledWithExactly(ExtendedDreamDate.secondsInYear, 2);
 					assert.strictEqual(timestamp, 200000);
 				});
 
@@ -206,7 +213,7 @@ describe('lib/dream-date', () => {
 		describe('.hour', () => {
 
 			it('is set to the number of minutes in the timestamp', () => {
-				DreamDate.schema = {
+				ExtendedDreamDate.schema = {
 					conversions: {
 						secondsInDay: 86400,
 						secondsInHour: 3600
@@ -221,7 +228,7 @@ describe('lib/dream-date', () => {
 		describe('.hourInMeridiem', () => {
 
 			beforeEach(() => {
-				DreamDate.schema = {
+				ExtendedDreamDate.schema = {
 					conversions: {
 						hoursInHalfDay: 12
 					}
@@ -251,7 +258,7 @@ describe('lib/dream-date', () => {
 		describe('.meridiem', () => {
 
 			beforeEach(() => {
-				DreamDate.schema = {
+				ExtendedDreamDate.schema = {
 					calendar: {
 						time: {
 							anteMeridiemLabel: 'am',
@@ -287,7 +294,7 @@ describe('lib/dream-date', () => {
 		describe('.minute', () => {
 
 			it('is set to the number of minutes in the timestamp', () => {
-				DreamDate.schema = {
+				ExtendedDreamDate.schema = {
 					conversions: {
 						secondsInHour: 3600,
 						secondsInMinute: 60
@@ -302,7 +309,7 @@ describe('lib/dream-date', () => {
 		describe('.second', () => {
 
 			it('is set to the number of seconds in the timestamp', () => {
-				DreamDate.schema = {
+				ExtendedDreamDate.schema = {
 					conversions: {
 						secondsInMinute: 60
 					}

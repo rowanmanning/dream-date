@@ -16,15 +16,22 @@ describe('lib/dream-date-formatter', () => {
 
 	it('exports a class constructor', () => {
 		assert.isFunction(DreamDateFormatter);
-		assert.throws(() => DreamDateFormatter(), /cannot be invoked without/);
-		assert.doesNotThrow(() => new DreamDateFormatter());
+		assert.throws(DreamDateFormatter, /cannot be invoked without/);
 	});
 
 	describe('new DreamDateFormatter()', () => {
+		it('throws an error', () => {
+			assert.throws(() => new DreamDateFormatter(), 'You cannot create an instance of DreamDateFormatter, it is designed to be extended');
+		});
+	});
+
+	describe('new ExtendedDreamDateFormatter()', () => {
 		let date;
+		let ExtendedDreamDateFormatter;
 
 		beforeEach(() => {
-			date = new DreamDateFormatter();
+			ExtendedDreamDateFormatter = class ExtendedDreamDateFormatter extends DreamDateFormatter {};
+			date = new ExtendedDreamDateFormatter(0);
 		});
 
 		describe('.format`template`', () => {
