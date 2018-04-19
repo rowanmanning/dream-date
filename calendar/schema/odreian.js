@@ -134,7 +134,7 @@ module.exports = {
 	],
 	moons: [
 		{
-			name: 'Moon',
+			name: 'Lün',
 			secondsInCycle: 60 * 60 * 24 * 30
 		}
 	]
