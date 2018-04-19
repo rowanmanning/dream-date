@@ -171,6 +171,16 @@
 				"postMeridiemLabel": {
 					"type": "string",
 					"minLength": 1
+				},
+				"sunriseHour": {
+					"type": "integer",
+					"multipleOf": 1,
+					"minimum": 0
+				},
+				"sunsetHour": {
+					"type": "integer",
+					"multipleOf": 1,
+					"minimum": 0
 				}
 			},
 			"additionalProperties": false
