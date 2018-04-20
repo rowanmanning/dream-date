@@ -10,7 +10,7 @@ describe('included tide calendar', () => {
 			input: 0,
 			expect: {
 				isLeapYear: false,
-				YY: '1SF',
+				YY: '1FR',
 				M: '1',
 				D: '1'
 			}

@@ -109,9 +109,38 @@ module.exports = {
 	},
 	periods: [
 		{
-			name: 'Since Formation',
-			abbr: 'SF',
-			startYear: 1
+			name: 'Formation',
+			abbr: 'FR',
+			long: 'Age of Formation',
+			startYear: 1,
+			endYear: 1262
+		},
+		{
+			name: 'Trials',
+			abbr: 'TR',
+			long: 'Age of Trials',
+			startYear: 1263,
+			endYear: 2757
+		},
+		{
+			name: 'Old Kingdom',
+			abbr: 'OK',
+			long: 'Age of Old Kingdom',
+			startYear: 2758,
+			endYear: 3361
+		},
+		{
+			name: 'Conquest',
+			abbr: 'CQ',
+			long: 'Age of Conquest',
+			startYear: 3362,
+			endYear: 3598
+		},
+		{
+			name: 'Union',
+			abbr: 'UN',
+			long: 'Age of Union',
+			startYear: 3599
 		}
 	],
 	moons: [
