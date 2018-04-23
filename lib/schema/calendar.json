@@ -3,6 +3,7 @@
 	"description": "A representation of a calendar system",
 	"type": "object",
 	"properties": {
+		"formats": { "$ref": "#/definitions/formats" },
 		"calendar": { "$ref": "#/definitions/calendar" },
 		"periods": {
 			"type": "array",
@@ -24,6 +25,43 @@
 	],
 
 	"definitions": {
+
+		"formats": {
+			"type": "object",
+			"properties": {
+				"LT": {
+					"type": "string"
+				},
+				"LTS": {
+					"type": "string"
+				},
+				"L": {
+					"type": "string"
+				},
+				"l": {
+					"type": "string"
+				},
+				"LL": {
+					"type": "string"
+				},
+				"ll": {
+					"type": "string"
+				},
+				"LLL": {
+					"type": "string"
+				},
+				"lll": {
+					"type": "string"
+				},
+				"LLLL": {
+					"type": "string"
+				},
+				"llll": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": false
+		},
 
 		"calendar": {
 			"type": "object",

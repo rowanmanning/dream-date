@@ -8,6 +8,12 @@ const day = hour * 24;
 const lunarCycleLength = (day * 30) + (hour * 10) + (minute * 30);
 
 module.exports = {
+	formats: {
+		// As Harptos days don't have names,
+		// we need to not output them
+		LLLL: 'LLL',
+		llll: 'lll'
+	},
 	calendar: {
 		year: {
 			leapYearFrequency: 4,
