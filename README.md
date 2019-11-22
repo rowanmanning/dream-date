@@ -68,6 +68,7 @@ If you'd rather not create your own calendar, the library ships with a few. Just
 const HarptosDate = require('dream-date/calendar/harptos');
 const OdreianDate = require('dream-date/calendar/odreian');
 const TideDate = require('dream-date/calendar/tide');
+const GregorianDate = require('dream-date/calendar/gregorian');
 ```
 
 ### Creating a date
