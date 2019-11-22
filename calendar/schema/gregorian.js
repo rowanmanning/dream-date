@@ -2,8 +2,8 @@
 
 module.exports = {
 	calendar: {
-		leapYearFrequency: 4, // ahem not quite
 		year: {
+			leapYearFrequency: 4, // Ahem not quite
 			months: [
 				{
 					name: 'Jan',
