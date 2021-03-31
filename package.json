@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@quarterto/ordinal": "^1.0.0",
-    "ajv": "^6.12.0"
+    "ajv": "^8.0.2"
   },
   "devDependencies": {
     "@rowanmanning/eslint-config": "^2.1.0",
